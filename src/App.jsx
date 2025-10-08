@@ -34,7 +34,7 @@ function Cell({ value, handleBoard }) {
 function Board({ currentMove, board, handleSuperBoard }) {
     function handleBoard(idx) {
         return () => {
-            if (board[idx] !== "") return;
+            if (board[idx] !== "" || findWinner(board) !== "") return;
             const value = currentMove % 2 === 0 ? "X" : "O"; 
             const newBoard = [...board.slice(0, idx), value , ...board.slice(idx + 1)];
             handleSuperBoard(newBoard);
